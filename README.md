@@ -8,7 +8,7 @@ The following database diagram was used to support the design of the ERT develop
 ![Chart 1](https://github.com/banasibb/Employee_Database_challenge/blob/e1d41fd740cafcc75474d092076822a8da325999/EmployeeDB_2.png)
 
 ## Results
-The SQL for this challenge is contained in the file Employee_Database_challenge.sql. 
+The SQL for this challenge is contained in the file [Employee_Database_challenge.sql](https://github.com/banasibb/Employee_Database_challenge/blob/65e4ab884626028fc264b62e5b8b573ab8b25fa5/Employee_Challenge.sql). 
 ### Retirement Titles
 Using the ERD you created in this module as a reference and your knowledge of SQL queries, create a Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. 
  ```
