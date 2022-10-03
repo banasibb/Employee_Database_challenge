@@ -12,4 +12,9 @@ The purpose of the Employee Analysis was to leverage PostgreSQL to create a data
 - These results were then summarized in a breakdown of total employees eligible for retirement by job title.
 <br />Part two of the analysis was to compare employees eligible for retirement to the total number of employees eligible for the client's mentorship program. 
 ## Results
+[retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
+[unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
+[retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
+[mentorship_eligibility.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/mentorship_eligibility.csv)<br />
+
 ## Summary
