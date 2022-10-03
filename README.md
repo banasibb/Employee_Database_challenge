@@ -9,7 +9,7 @@ The purpose of the Employee Analysis was to leverage PostgreSQL to create a data
 ## Results
 
 ### Retirement Titles
-Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. Because some employees may have multiple titles in the database—for example, due to promotions 
+Using the ERD you created in this module as a reference and your knowledge of SQL queries, create a Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. 
  ```
 SELECT e.emp_no,
 	e.first_name,
