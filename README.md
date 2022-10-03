@@ -10,7 +10,7 @@ The following database diagram was used to support the design of the ERT develop
 ## Results
 The SQL for this challenge is contained in the file [Employee_Database_challenge.sql](https://github.com/banasibb/Employee_Database_challenge/blob/65e4ab884626028fc264b62e5b8b573ab8b25fa5/Employee_Challenge.sql). 
 ### Retirement Titles
-Using the ERD you created in this module as a reference and your knowledge of SQL queries, create a Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. 
+The code below was used to create the Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. 
  ```
 SELECT e.emp_no,
 	e.first_name,
@@ -28,7 +28,7 @@ ORDER BY e.emp_no;
 The output of this analysis is here: [retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
 
 ### Unique Titles
-Because some employees may have multiple titles in the database—for example, due to promotions—you’ll need to use the DISTINCT ON statement to create a table that contains the most recent title of each employee.
+Because some employees may have multiple titles in the database—for example, due to promotions, a DISTINCT ON statement was used to create a table that contains the most recent title of each employee.
 ```
 SELECT DISTINCT ON (rt.emp_no)
 	rt.emp_no,
@@ -45,7 +45,7 @@ ORDER BY rt.emp_no, de.to_date DESC;
 The output of this analysis is here: [unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
 
 ### Retiring Titles
-Then, use the COUNT() function to create a table that has the number of retirement-age employees by most recent job title. Finally, because we want to include only current employees in our analysis, be sure to exclude those employees who have already left the company.
+The COUNT() function was used to create a table that has the number of retirement-age employees by most recent job title. Those employees who have already left the company were excluded by using a WHERE statement to set the to_date equal to '9999-01-01'.
  ```
     SELECT COUNT (ut.emp_no),
 	ut.title
@@ -60,7 +60,7 @@ ORDER BY COUNT(ut.emp_no) DESC;
 The output of this analysis is here: [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
 
 ### Mentorship Eligibility
-Create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965.
+The mentorship-eligibility table holds the current employees who were born between January 1, 1965 and December 31, 1965.
 ```
 SELECT DISTINCT ON (e.emp_no)
 	e.emp_no,
@@ -87,7 +87,10 @@ Provide high-level responses to the following questions, then provide two additi
 How many roles will need to be filled as the "silver tsunami" begins to make an impact?
 Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
 ### Additional Insights
- ```
+The following two additional tables were included to provide more insight into the upcoming "silver tsunami."
+
+By analyzing the total employees of retirement age by department, we can determine that the 
+```
 --Deliverable 3c Total Employees of Retirement Age by Department
 SELECT COUNT (ri.emp_no),
 	d.dept_name
