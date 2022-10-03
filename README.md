@@ -5,14 +5,11 @@ The purpose of the Employee Analysis was to leverage PostgreSQL to create a data
 - Data Sources: departments.csv, dept_emp.csv, dept_manager.csv, employees.csv, salaries.csv, titles.csv<br />
 - Software: pgAdmin 4 (Version 6.12), QuickDBD ([quickdatabasediagrams.com](https://www.quickdatabasediagrams.com/))
 ![Chart 1](https://github.com/banasibb/Employee_Database_challenge/blob/e1d41fd740cafcc75474d092076822a8da325999/EmployeeDB_2.png)
-### Assumptions
-- Employees eligible for retirement have a birth date between January 1, 1952 and December 31, 1955. 
-- To narrow the output to include only current employees and their most recent job title, the "to_date" field was set equal to '9999-01-01'
-- Employees eligible to participate in the mentorship program must have a birth date between January 1, 1965 and December 31, 1965.
 
 ## Results
 
 ### Retirement Titles
+Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. Because some employees may have multiple titles in the database—for example, due to promotions 
  ```
     SELECT e.emp_no,
 	e.first_name,
@@ -30,7 +27,8 @@ ORDER BY e.emp_no;
 [retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
 
 ### Unique Titles
- ```
+Because some employees may have multiple titles in the database—for example, due to promotions—you’ll need to use the DISTINCT ON statement to create a table that contains the most recent title of each employee.
+```
     SELECT DISTINCT ON (rt.emp_no)
 	rt.emp_no,
 	rt.first_name,
@@ -46,7 +44,8 @@ ORDER BY rt.emp_no, de.to_date DESC;
 [unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
 
 ### Retiring Titles
- ```
+Then, use the COUNT() function to create a table that has the number of retirement-age employees by most recent job title. Finally, because we want to include only current employees in our analysis, be sure to exclude those employees who have already left the company.
+```
     SELECT count (ut.emp_no),
 	ut.title
 --INTO retiring_titles
@@ -57,7 +56,8 @@ ORDER BY COUNT(ut.emp_no) DESC;
 [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
 
 ### Mentorship Eligibility
- ```
+Create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965.
+```
     SELECT DISTINCT ON (e.emp_no)
 	e.emp_no,
 	e.first_name,
