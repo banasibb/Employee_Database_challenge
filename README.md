@@ -11,13 +11,13 @@ The purpose of the Employee Analysis was to leverage PostgreSQL to create a data
 ### Retirement Titles
 Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. Because some employees may have multiple titles in the database—for example, due to promotions 
  ```
-    SELECT e.emp_no,
+SELECT e.emp_no,
 	e.first_name,
 	e.last_name,
 	t.title,
 	t.from_date,
 	t.to_date
---INTO retirement_titles
+INTO retirement_titles
 FROM employees as e
 INNER JOIN titles AS t
 ON (e.emp_no = t.emp_no)
@@ -29,12 +29,12 @@ ORDER BY e.emp_no;
 ### Unique Titles
 Because some employees may have multiple titles in the database—for example, due to promotions—you’ll need to use the DISTINCT ON statement to create a table that contains the most recent title of each employee.
 ```
-    SELECT DISTINCT ON (rt.emp_no)
+SELECT DISTINCT ON (rt.emp_no)
 	rt.emp_no,
 	rt.first_name,
 	rt.last_name,
 	rt.title
---INTO unique_titles
+INTO unique_titles
 FROM retirement_titles as rt
 LEFT JOIN dept_emp as de
 ON (rt.emp_no = de.emp_no)
@@ -46,9 +46,9 @@ ORDER BY rt.emp_no, de.to_date DESC;
 ### Retiring Titles
 Then, use the COUNT() function to create a table that has the number of retirement-age employees by most recent job title. Finally, because we want to include only current employees in our analysis, be sure to exclude those employees who have already left the company.
 ```
-    SELECT count (ut.emp_no),
+SELECT count (ut.emp_no),
 	ut.title
---INTO retiring_titles
+INTO retiring_titles
 FROM unique_titles as ut
 GROUP BY ut.title
 ORDER BY COUNT(ut.emp_no) DESC;
@@ -58,7 +58,7 @@ ORDER BY COUNT(ut.emp_no) DESC;
 ### Mentorship Eligibility
 Create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965.
 ```
-    SELECT DISTINCT ON (e.emp_no)
+SELECT DISTINCT ON (e.emp_no)
 	e.emp_no,
 	e.first_name,
 	e.last_name,
@@ -66,7 +66,7 @@ Create a mentorship-eligibility table that holds the current employees who were 
 	de.from_date,
 	de.to_date,
 	ti.title
---INTO mentorship_eligibility
+INTO mentorship_eligibility
 FROM employees as e
 INNER JOIN dept_emp as de
 ON e.emp_no=de.emp_no
