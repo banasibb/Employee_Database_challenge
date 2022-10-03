@@ -86,3 +86,40 @@ The output of this analysis is contained here: [mentorship_eligibility.csv](http
 Provide high-level responses to the following questions, then provide two additional queries or tables that may provide more insight into the upcoming "silver tsunami."
 How many roles will need to be filled as the "silver tsunami" begins to make an impact?
 Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
+### Additional Insights
+ ```
+--Deliverable 3c Total Employees of Retirement Age by Department
+SELECT COUNT (ri.emp_no),
+	d.dept_name
+--INTO retiring_dept
+FROM retirement_info as ri
+INNER JOIN dept_emp as de
+ON ri.emp_no=de.emp_no
+INNER JOIN departments as d
+ON de.dept_no=d.dept_no
+WHERE (de.to_date = '9999-01-01')
+GROUP BY d.dept_name
+ORDER BY COUNT (ri.emp_no) DESC;
+  ```
+![Chart Retirement Age Employees by Department](https://github.com/banasibb/Employee_Database_challenge/blob/1dfecf7fc19900faa9232caf56799ef206fbdf19/Deliverables%20Additional%20Tables/Retirement%20Age%20Employees%20by%20Department_cropped.png)<br />
+ ```
+--Deliverable 3d Total Employees of Mentorship Age by Department - Create Table
+SELECT DISTINCT ON (e.emp_no)
+	e.emp_no,
+	d.dept_name
+--INTO mentee_eligibility
+FROM employees as e
+INNER JOIN dept_emp as de
+ON e.emp_no=de.emp_no
+INNER JOIN departments as d
+ON de.dept_no=d.dept_no
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+	AND (de.to_date = '9999-01-01')
+ORDER BY e.emp_no DESC;
+--Deliverable 3d Create Summary Table Employees Eligible for Mentorship Program
+SELECT COUNT (me.emp_no), me.dept_name
+from mentee_eligibility as me
+GROUP BY me.dept_name;
+  ```
+![Chart Mentorship Eligible Employees by Department](https://github.com/banasibb/Employee_Database_challenge/blob/1dfecf7fc19900faa9232caf56799ef206fbdf19/Deliverables%20Additional%20Tables/Mentorship%20Program%20Employees%20by%20Department_cropped.png)<br />
+
