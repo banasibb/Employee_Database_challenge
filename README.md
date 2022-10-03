@@ -45,11 +45,14 @@ ORDER BY rt.emp_no, de.to_date DESC;
 
 ### Retiring Titles
 Then, use the COUNT() function to create a table that has the number of retirement-age employees by most recent job title. Finally, because we want to include only current employees in our analysis, be sure to exclude those employees who have already left the company.
-```
-SELECT count (ut.emp_no),
+ ```
+    SELECT COUNT (ut.emp_no),
 	ut.title
-INTO retiring_titles
-FROM unique_titles as ut
+--INTO retiring_titles
+FROM retirement_titles as rt
+INNER JOIN unique_titles as ut
+ON (rt.emp_no = ut.emp_no)
+WHERE (rt.to_date = '9999-01-01')
 GROUP BY ut.title
 ORDER BY COUNT(ut.emp_no) DESC;
   ```
