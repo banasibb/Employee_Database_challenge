@@ -25,7 +25,7 @@ ON (e.emp_no = t.emp_no)
 WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 ORDER BY e.emp_no;
   ```
-The output of this analysis is contained here: [retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
+The output of this analysis is here: [retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
 
 ### Unique Titles
 Because some employees may have multiple titles in the database—for example, due to promotions—you’ll need to use the DISTINCT ON statement to create a table that contains the most recent title of each employee.
@@ -42,7 +42,7 @@ ON (rt.emp_no = de.emp_no)
 WHERE (de.to_date = '9999-01-01')
 ORDER BY rt.emp_no, de.to_date DESC;
   ```
-The output of this analysis is contained here: [unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
+The output of this analysis is here: [unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
 
 ### Retiring Titles
 Then, use the COUNT() function to create a table that has the number of retirement-age employees by most recent job title. Finally, because we want to include only current employees in our analysis, be sure to exclude those employees who have already left the company.
@@ -57,7 +57,7 @@ WHERE (rt.to_date = '9999-01-01')
 GROUP BY ut.title
 ORDER BY COUNT(ut.emp_no) DESC;
   ```
-The output of this analysis is contained here: [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
+The output of this analysis is here: [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
 
 ### Mentorship Eligibility
 Create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965.
