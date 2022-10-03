@@ -9,6 +9,8 @@ The following database diagram was used to support the design of the ERT develop
 
 ## Results
 The SQL for this challenge is contained in the file [Employee_Database_challenge.sql](https://github.com/banasibb/Employee_Database_challenge/blob/65e4ab884626028fc264b62e5b8b573ab8b25fa5/Employee_Challenge.sql). 
+
+There are a total of 331,603 employee records in the dept_emp ERD table. Of those, 240,124 are current employees. Within the current employee group, 72,458 individuals are eligible for retirement. This is just over 30% of the current workforce. 
 ### Retirement Titles
 The code below was used to create the Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. 
  ```
@@ -60,7 +62,7 @@ ORDER BY COUNT(ut.emp_no) DESC;
 The output of this analysis is here: [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
 
 ### Mentorship Eligibility
-The mentorship-eligibility table holds the current employees who were born between January 1, 1965 and December 31, 1965.
+The mentorship-eligibility table holds the current employees who were born between January 1, 1965 and December 31, 1965. There are a total of 1,549 individuals eligible to mentor new employees. This is just 0.64% of the current workforce (1,549/240,124 current employees), and 0.92%% of the current employees who are not eligible for retirement (tot. 167,666).
 ```
 SELECT DISTINCT ON (e.emp_no)
 	e.emp_no,
