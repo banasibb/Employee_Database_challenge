@@ -17,7 +17,7 @@ There are a total of 331,603 employee records in the dept_emp ERD table. Of thos
 - [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
 
 #### Retirement Titles
-The code below was used to create the Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. 
+The code below was used to create the Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. The output of the code below is linked above and linked here: [retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
  ```
 SELECT e.emp_no,
 	e.first_name,
@@ -32,10 +32,10 @@ ON (e.emp_no = t.emp_no)
 WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 ORDER BY e.emp_no;
   ```
-The output of this analysis is here: [retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
+
 
 #### Unique Titles
-Because some employees may have multiple titles in the database—for example, due to promotions, a DISTINCT ON statement was used to create a table that contains the most recent title of each employee.
+Because some employees may have multiple titles in the database—for example, due to promotions, a DISTINCT ON statement was used to create a table that contains the most recent title of each employee. The output of the code below is linked above and linked here: [unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
 ```
 SELECT DISTINCT ON (rt.emp_no)
 	rt.emp_no,
@@ -49,12 +49,10 @@ ON (rt.emp_no = de.emp_no)
 WHERE (de.to_date = '9999-01-01')
 ORDER BY rt.emp_no, de.to_date DESC;
   ```
-The output of this analysis is here: 
 
-[unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
 
 #### Retirees by Title
-The COUNT() function was used to create a table that has the number of retirement-age employees by most recent job title. Those employees who have already left the company were excluded by using a WHERE statement to set the to_date equal to '9999-01-01'.
+The COUNT() function was used to create a table that has the number of retirement-age employees by most recent job title. Those employees who have already left the company were excluded by using a WHERE statement to set the to_date equal to '9999-01-01'. The output of the code below is linked above and linked here: [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
  ```
     SELECT COUNT (ut.emp_no),
 	ut.title
@@ -66,9 +64,6 @@ WHERE (rt.to_date = '9999-01-01')
 GROUP BY ut.title
 ORDER BY COUNT(ut.emp_no) DESC;
   ```
-
-
-![Chart Retirees by Title](https://github.com/banasibb/Employee_Database_challenge/blob/d390a4147afba0517bb54f8bd4cc9385ed673490/Retirees%20by%20Title.png)<br />
 
 ### Mentorship Eligibility
 The mentorship-eligibility table holds the current employees who were born between January 1, 1965 and December 31, 1965. There are a total of 1,549 individuals eligible to mentor new employees. This is just 0.64% of the current workforce (1,549/240,124 current employees), and 0.92%% of the current employees who are not eligible for retirement (tot. 167,666). The requested output of this analysis can be found below.
