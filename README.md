@@ -1,4 +1,4 @@
-# Employee_Database_challenge
+# Pewlett-Hackard Employee Database Analysis
 ## Overview of the Analysis
 The purpose of the Employee Analysis was to leverage PostgreSQL to create an ERT containing six CSV data files with information about current and former employees of the Pewlett-Hackard company. The output was then be used to assess attributes of the workforce eligible for retirement and participation in the mentorship program. The results will inform senior leadership as to how prepared their current workforce is to train incoming employees in the event of a "silver tsunami." <br />
 ### Resources
@@ -11,7 +11,9 @@ The following database diagram was used to support the design of the ERT develop
 The SQL for this challenge is contained in the file [Employee_Database_challenge.sql](https://github.com/banasibb/Employee_Database_challenge/blob/65e4ab884626028fc264b62e5b8b573ab8b25fa5/Employee_Challenge.sql). 
 
 There are a total of 331,603 employee records in the dept_emp ERD table. Of those, 240,124 are current employees. Within the current employee group, 72,458 individuals are eligible for retirement. This is just over 30% of the current workforce. 
-
+[retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
+[unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
+![Chart Retirees by Title](https://github.com/banasibb/Employee_Database_challenge/blob/d390a4147afba0517bb54f8bd4cc9385ed673490/Retirees%20by%20Title.png)<br />
 
 ### Retirees by Title
 The COUNT() function was used to create a table that has the number of retirement-age employees by most recent job title. Those employees who have already left the company were excluded by using a WHERE statement to set the to_date equal to '9999-01-01'.
