@@ -13,7 +13,7 @@ The SQL for this challenge is contained in the file [Employee_Database_challenge
 There are a total of 331,603 employee records in the dept_emp ERD table. Of those, 240,124 are current employees. Within the current employee group, 72,458 individuals are eligible for retirement. This is just over 30% of the current workforce. 
 
 
-### Retiring Titles
+### Retirees by Title
 The COUNT() function was used to create a table that has the number of retirement-age employees by most recent job title. Those employees who have already left the company were excluded by using a WHERE statement to set the to_date equal to '9999-01-01'.
  ```
     SELECT COUNT (ut.emp_no),
