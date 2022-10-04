@@ -11,7 +11,7 @@ The following database diagram was used to support the design of the ERT develop
 The SQL for this challenge is contained in the file [Employee_Database_challenge.sql](https://github.com/banasibb/Employee_Database_challenge/blob/65e4ab884626028fc264b62e5b8b573ab8b25fa5/Employee_Challenge.sql). 
 
 ### Retirees
-There are a total of 331,603 employee records in the dept_emp ERD table. Of those, 240,124 are current employees. Within the current employee group, 72,458 individuals are eligible for retirement. This is just over 30% of the current workforce. 
+There are a total of 331,603 employee records in the dept_emp ERD table. Of those, 240,124 are current employees. Within the current employee group, 72,458 individuals are eligible for retirement. This is just over 30% of the current workforce. Links to the three requested tables regarding employees eligible for retirement can be found below.
 - [retirement_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/12682cfdb9abefb968f84cf8ed86310e71967639/retirement_titles.csv)<br />
 - [unique_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/unique_titles.csv)<br />
 - [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
@@ -66,12 +66,15 @@ WHERE (rt.to_date = '9999-01-01')
 GROUP BY ut.title
 ORDER BY COUNT(ut.emp_no) DESC;
   ```
-The output of this analysis is here: [retiring_titles.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/retiring_titles.csv)<br />
+
 
 ![Chart Retirees by Title](https://github.com/banasibb/Employee_Database_challenge/blob/d390a4147afba0517bb54f8bd4cc9385ed673490/Retirees%20by%20Title.png)<br />
 
 ### Mentorship Eligibility
-The mentorship-eligibility table holds the current employees who were born between January 1, 1965 and December 31, 1965. There are a total of 1,549 individuals eligible to mentor new employees. This is just 0.64% of the current workforce (1,549/240,124 current employees), and 0.92%% of the current employees who are not eligible for retirement (tot. 167,666).
+The mentorship-eligibility table holds the current employees who were born between January 1, 1965 and December 31, 1965. There are a total of 1,549 individuals eligible to mentor new employees. This is just 0.64% of the current workforce (1,549/240,124 current employees), and 0.92%% of the current employees who are not eligible for retirement (tot. 167,666). The requested output of this analysis can be found below.
+- [mentorship_eligibility.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/mentorship_eligibility.csv)<br />
+
+Excerpt of code:
 ```
 SELECT DISTINCT ON (e.emp_no)
 	e.emp_no,
@@ -91,7 +94,7 @@ WHERE (de.to_date = '9999-01-01')
 	AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY e.emp_no;
   ```
-The output of this analysis is contained here: [mentorship_eligibility.csv](https://github.com/banasibb/Employee_Database_challenge/blob/746080a7c0693d1dff7dbcb2fa7e9605f37afc70/mentorship_eligibility.csv)<br />
+
 
 ## Summary
 A total of 72,458 individuals are eligible for retirement. If they were to all retire at the same time, and assuming Pewlett-Hackard is staffed optimally currently, the same number of roles will need to be filled. This is a concerning outlook for the company.
